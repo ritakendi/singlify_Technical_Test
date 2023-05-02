@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF_8">
+    <title>Loan Schedule Calculator</title>
+    <link rel="stylesheet" href="static/css/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+
+</head>
+
+<body>
+    <div class="form-bg">
+        <div class="container">
+            <div class=" row">
+                <div class="col-md-offset-3 col-md-6">
+                    <form action="{{ url_for('calculate_schedule') }}" method="post" class="form-horizontal">
+                        <div style="width: 800px;" class="header">Loan Schedule Calculator</div>
+                        <div class="form-content">
+                            <!-- <h4 class="heading">Your Details</h4> -->
+
+                            <div class="form-group">
+                                <div class="col-sm-6" style="width: 400px; margin:  auto;">
+                                    <label for="loan_product">Loan Product :</label>
+                                    <select class="form-select" aria-label=" " style="padding: 5px;">
+                                        <option selected>select</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+
+
+                                    <label for="loan_amount" style="margin-top: 10px;">Loan Amount :</label>
+                                    <input class="form-control" id="loan_amount" name="loan_amount" type="text" style="border: 1px
+                                    solid #ccc; padding: 5px;">
+
+                                    <label for="num_months">Number of Months :</label>
+                                    <input class="form-control" id="num_months" name="num_months" type="text" style="border: 1px
+                                    solid #ccc; padding: 5px;">
+
+                                    <label for="Expected_Disbursement_Date">Expected Disbursement Date:</label>
+                                    <input type="date" name="Expected_Disbursement_Date" id="Expected_Disbursement_Date"
+                                        style="border: 1px
+                                        solid #ccc; padding: 5px;">
+
+                                    <label for="due_date">Monthly Due Date:</label>
+                                    <input type="number" name="due_date" id="due_date" style="border: 1px
+                                    solid #ccc; padding: 5px; width: 60px; margin-top: 10px;">
+
+                                    <label for="periods_per_year">Periods per year:</label>
+                                    <input type="number" name="periods_per_year" id="periods_per_year" style="border: 1px
+                                    solid #ccc; padding: 5px; width: 60px; margin-top: 10px;">
+
+                                    <label style="margin-bottom: 0px; margin-top: 8px;" for="months">Select Months:
+                                    </label>
+                                    <select class="selectpicker" multiple data-live-search="true" id="months"
+                                        name="months" style="margin-top: 0px;">
+                                        <option>January</option>
+                                        <option>February</option>
+                                        <option>March</option>
+                                        <option>April</option>
+                                        <option>May</option>
+                                        <option>June</option>
+                                        <option>July</option>
+                                        <option>August</option>
+                                        <option>September</option>
+                                        <option>October</option>
+                                        <option>November</option>
+                                        <option>December</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-primary" type="submit">Calculate Loan</button>
+
+                            </div>
+
+                            <div class="col-md-11">
+                                <div class="panel panel-primary">
+                                    <div class="panel-heading"><i class="fa fa-list-ul" aria-hidden="true"></i> Loan
+                                        Schedule </div>
+                                    <div class="panel-body">
+
+                                        <table class="table table-condensed table-responsive" style='width: 100%;'>
+                                            <thead>
+                                                <tr>
+                                                    <!-- <th class="small" style='font-size: 10px'># </th> -->
+                                                    <th class="small" style='font-size: 10px'>Period </th>
+                                                    <th class="small" style='font-size: 10px'>Date </th>
+                                                    <th class="small" style='font-size: 10px'>Interest</th>
+                                                    <th class="small" style='font-size: 10px'>Fees</th>
+                                                    <th class="small" style='font-size: 10px'>Principal</th>
+                                                    <th class="small" style='font-size: 10px'>Total Amount</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for row in schedule %}
+                                                <tr>
+                                                    <td>{{ row.period }}</td>
+                                                    <td>{{ row.date }}</td>
+                                                    <td>{{ row.interest}}</td>
+                                                    <td>{{ row.fees }}</td>
+                                                    <td>{{ row.principal }}</td>
+                                                    <td>{{ row.total_amount }}</td>
+                                                </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
