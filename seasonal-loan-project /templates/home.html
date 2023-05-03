@@ -89,47 +89,52 @@
 
                             </div>
 
+                            <hr />
+
                             <div class="col-md-11">
                                 <div class="panel panel-primary">
-                                    <div class="panel-heading"><i class="fa fa-list-ul" aria-hidden="true"></i> Loan
-                                        Schedule </div>
-                                    <div class="panel-body">
-
-                                        <table class="table table-condensed table-responsive" style='width: 100%;'>
-                                            <thead>
-                                                <tr>
-                                                    <!-- <th class="small" style='font-size: 10px'># </th> -->
-                                                    <th class="small" style='font-size: 10px'>Period </th>
-                                                    <th class="small" style='font-size: 10px'>Date </th>
-                                                    <th class="small" style='font-size: 10px'>Interest</th>
-                                                    <th class="small" style='font-size: 10px'>Fees</th>
-                                                    <th class="small" style='font-size: 10px'>Principal</th>
-                                                    <th class="small" style='font-size: 10px'>Total Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {% for row in schedule %}
-                                                <tr>
-                                                    <td>{{ row.period }}</td>
-                                                    <td>{{ row.date }}</td>
-                                                    <td>{{ row.interest}}</td>
-                                                    <td>{{ row.fees }}</td>
-                                                    <td>{{ row.principal }}</td>
-                                                    <td>{{ row.total_amount }}</td>
-                                                </tr>
-                                                {% endfor %}
-                                            </tbody>
-                                        </table>
+                                    <div class="panel-heading"
+                                        style="font-size:30px; color: #0f889b; text-align: center;">
+                                        <i class="fa fa-list-ul" aria-hidden="true"></i> Loan
+                                        Schedule
                                     </div>
                                 </div>
-
                             </div>
+
+                            <div>
+                                <table class="table table-condensed table-responsive">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th class="small" style='font-size: 10px'># </th> -->
+                                            <th class="small" style='font-size: 15px'>Period </th>
+                                            <th class="small" style='font-size: 15px'>Date </th>
+                                            <th class="small" style='font-size: 15px'>Interest</th>
+                                            <th class="small" style='font-size: 15px'>Fees</th>
+                                            <th class="small" style='font-size: 15px'>Principal</th>
+                                            <th class="small" style='font-size: 15px'>Total Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for row in schedule %}
+                                        <tr>
+                                            <td>{{ row.period }}</td>
+                                            <td>{{ row.date }}</td>
+                                            <td>{{ row.interest}}</td>
+                                            <td>{{ row.fees }}</td>
+                                            <td>{{ row.principal }}</td>
+                                            <td>{{ row.total_amount }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
                     </form>
                 </div>
             </div>
 
         </div>
-
     </div>
 </body>
 

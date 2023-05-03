@@ -106,10 +106,10 @@ def calculate_loan_schedule(num_of_months, total_loan, periods_per_year, disburs
             schedule.append({
                 'period': period,
                 'date': monthly_due_date,
-                'interest': interest,
-                'fees': FEES,
-                'principal': principal,
-                'total_amount': total_amount,
+                'interest': round(interest, 2),
+                'fees': round(FEES, 2),
+                'principal': round(principal, 2),
+                'total_amount': round(total_amount, 2)
             })
 
         else:
