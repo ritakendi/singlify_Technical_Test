@@ -1,7 +1,9 @@
-.form-bg {
+.top-div {
     /* background: #e4e6e6; */
     background: url(../images/image.png);
-    background-repeat: no-repeat;
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    /* height: 100vh; */
 
 }
 
@@ -43,7 +45,7 @@ form {
 .form-horizontal .form-content {
     padding: 140px;
     background: #dbd4d4;
-    width: 800px;
+    /* width: 800px; */
     vertical-align: top;
 
 
@@ -85,8 +87,10 @@ form {
 }
 
 .container {
-    padding-right: 15px;
-    padding-left: 15px;
+    /* padding-right: 15px;
+    padding-left: 15px; */
+    padding-top: 100px;
+    padding-bottom: 100px;
 
 
 
