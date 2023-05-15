@@ -59,7 +59,7 @@ def calculate_loan_schedule(num_of_months, total_loan, periods_per_year, disburs
     # rounded up to the nearest integer
     all_payments_periods = math.ceil(num_of_months / 12) * periods_per_year
 
-    # Calculate the monthly fees a
+    # Calculate the monthly fees
     # and the total fees to be paid over all payment periods
     Monthly_fees = 0.0035 * total_loan
     FEES = (Monthly_fees * num_of_months) / all_payments_periods
@@ -77,15 +77,15 @@ def calculate_loan_schedule(num_of_months, total_loan, periods_per_year, disburs
             days_since_last_payment = (
                 monthly_due_date - (monthly_due_date - relativedelta(months=1))).days
 
-        # Get the current month
-        current_month = monthly_due_date.strftime("%B")
-
         # interest due for this period
         interest = (balance * LOAN_INTEREST_RATE *
                     days_since_last_payment)/36000
 
         # Calculate principal due for the period
         principal = (total_amount - interest - FEES)
+
+        # Get the current month
+        current_month = monthly_due_date.strftime("%B")
 
         # Check if current month is in the list of months selected
         if current_month in select_months:
